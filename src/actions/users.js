@@ -3,12 +3,12 @@ import {
     RETRIEVE_USERS,
     UPDATE_USER,
     DELETE_USER,
-    // DELETE_ALL_TUTORIALS,
+    // DELETE_ALL_USERS,
   } from "./types";
   import UserDataService from "../services/userService";
-  export const createUser = (firstName, lastName, Username, email, password, role) => async (dispatch) => {
+  export const createUser = (firstName, lastName, username, email, password, role) => async (dispatch) => {
     try {
-      const res = await UserDataService.create({ firstName, lastName, Username, email, password, role });
+      const res = await UserDataService.create({ firstName, lastName, username, email, password, role });
       dispatch({
         type: CREATE_USER,
         payload: res.data,
@@ -52,11 +52,11 @@ import {
       console.log(err);
     }
   };
-//   export const deleteAllTutorials = () => async (dispatch) => {
+//   export const deleteAllUsers = () => async (dispatch) => {
 //     try {
-//       const res = await TutorialDataService.removeAll();
+//       const res = await UserDataService.removeAll();
 //       dispatch({
-//         type: DELETE_ALL_TUTORIALS,
+//         type: DELETE_ALL_USERS,
 //         payload: res.data,
 //       });
 //       return Promise.resolve(res.data);
@@ -64,11 +64,11 @@ import {
 //       return Promise.reject(err);
 //     }
 //   };
-//   export const findTutorialsByTitle = (title) => async (dispatch) => {
+//   export const findUsersByTitle = (title) => async (dispatch) => {
 //     try {
-//       const res = await TutorialDataService.findByTitle(title);
+//       const res = await UserDataService.findByTitle(title);
 //       dispatch({
-//         type: RETRIEVE_TUTORIALS,
+//         type: RETRIEVE_USERS,
 //         payload: res.data,
 //       });
 //     } catch (err) {

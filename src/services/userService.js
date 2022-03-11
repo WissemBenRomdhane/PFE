@@ -16,10 +16,10 @@ import http from "../http-common";
     return http.delete(`/users/${id}`);
   };
 //   deleteAll() {
-//     return http.delete(`/tutorials`);
+//     return http.delete(`/users`);
 //   }
 //   findByTitle(title) {
-//     return http.get(`/tutorials?title=${title}`);
+//     return http.get(`/users?title=${title}`);
 //   }
 const UserDataService = {
   getAll,

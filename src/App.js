@@ -40,9 +40,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AddTutorial from "./components/AddUser";
-import Tutorial from "./components/User";
-import TutorialsList from "./components/UsersList";
+import AddUser from "./components/AddUser";
+// import User from "./components/User";
+// import UsersList from "./components/UsersList";
 
 function App() {
   return (
@@ -54,7 +54,7 @@ function App() {
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to={"/users"} className="nav-link">
-              Tutorials
+              Users
             </Link>
           </li>
           <li className="nav-item">
@@ -66,9 +66,9 @@ function App() {
       </nav>
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/users"]} component={TutorialsList} />
-          <Route exact path="/add" component={AddTutorial} />
-          <Route path="/users/:id" component={Tutorial} />
+          {/* <Route exact path={["/", "/users"]} component={UsersList} /> */}
+          <Route exact path="/add" component={AddUser} />
+          {/* <Route path="/users/:id" component={User} /> */}
         </Switch>
       </div>
     </Router>
