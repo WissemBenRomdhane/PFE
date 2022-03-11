@@ -7,6 +7,7 @@ import com.tekup.orchestrateur.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.tekup.orchestrateur.models.User;
 import com.tekup.orchestrateur.repositories.UserRepository;
 import com.tekup.orchestrateur.services.UserService;
 
+@CrossOrigin
 @RestController
 public class UserController {
     private UserRepository userRepository;
