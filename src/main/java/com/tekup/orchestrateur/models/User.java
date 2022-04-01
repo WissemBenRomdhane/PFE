@@ -1,36 +1,45 @@
 package com.tekup.orchestrateur.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
 
 @Entity
-@Table (name= "Users")
+@Table (name= "users")
 public class User {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String firstName;
 	private String lastName;
-	private String Username;
+	private String username;
 	private String email;
 	private String password;
-	private String role;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 	
 	public User() {
 		super();
 	}
 
-	public User(int id, String firstName, String lastName, String email, String password, String role) {
+	public User(int id, String firstName, String lastName, String Username, String email, String password) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.role = role;
+	}
+	public User(String firstName, String lastName, String Username, String email, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 	}
 	
 	
@@ -60,11 +69,11 @@ public class User {
 
 	
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		Username = username;
+		username = username;
 	}
 
 	public String getEmail() {
@@ -83,12 +92,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 	
 	
