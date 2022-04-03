@@ -26,18 +26,11 @@ public class User {
 		super();
 	}
 
-	public User(int id, String firstName, String lastName, String Username, String email, String password) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-	}
-	public User(String firstName, String lastName, String Username, String email, String password) {
+	public User(String firstName, String lastName, String username, String email, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
