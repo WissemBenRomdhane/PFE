@@ -3,7 +3,7 @@ import {
     RETRIEVE_USERS,
     UPDATE_USER,
     DELETE_USER,
-    // DELETE_ALL_USERS,
+    DELETE_ALL_USERS,
   } from "../actions/types";
   const initialState = [];
   function userReducer(users = initialState, action) {
@@ -26,8 +26,8 @@ import {
         });
       case DELETE_USER:
         return users.filter(({ id }) => id !== payload.id);
-    //   case DELETE_ALL_USERS:
-    //     return [];
+      case DELETE_ALL_USERS:
+        return [];
       default:
         return users;
     }
