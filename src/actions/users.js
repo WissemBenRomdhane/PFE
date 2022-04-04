@@ -5,10 +5,10 @@ import {
     DELETE_USER,
     DELETE_ALL_USERS,
   } from "./types";
-  import UserDataService from "../services/userService";
+  import AuthService from "../services/authService";
   export const createUser = (firstName, lastName, username, email, password, role) => async (dispatch) => {
     try {
-      const res = await UserDataService.create({ firstName, lastName, username, email, password, role });
+      const res = await AuthService.create({ firstName, lastName, username, email, password, role });
       dispatch({
         type: CREATE_USER,
         payload: res.data,
@@ -20,7 +20,7 @@ import {
   };
   export const retrieveUsers = () => async (dispatch) => {
     try {
-      const res = await UserDataService.getAll();
+      const res = await AuthService.getAll();
       dispatch({
         type: RETRIEVE_USERS,
         payload: res.data,
@@ -31,7 +31,7 @@ import {
   };
   export const updateUser = (id, data) => async (dispatch) => {
     try {
-      const res = await UserDataService.update(id, data);
+      const res = await AuthService.update(id, data);
       dispatch({
         type: UPDATE_USER,
         payload: data,
@@ -43,7 +43,7 @@ import {
   };
   export const deleteUser = (id) => async (dispatch) => {
     try {
-      await UserDataService.remove(id);
+      await AuthService.remove(id);
       dispatch({
         type: DELETE_USER,
         payload: { id },
@@ -54,7 +54,7 @@ import {
   };
   export const deleteAllUsers = () => async (dispatch) => {
     try {
-      const res = await UserDataService.removeAll();
+      const res = await AuthService.removeAll();
       dispatch({
         type: DELETE_ALL_USERS,
         payload: res.data,
@@ -66,7 +66,7 @@ import {
   };
   export const findUsersByName = (firstName) => async (dispatch) => {
     try {
-      const res = await UserDataService.findByName(firstName);
+      const res = await AuthService.findByName(firstName);
       dispatch({
         type: RETRIEVE_USERS,
         payload: res.data,

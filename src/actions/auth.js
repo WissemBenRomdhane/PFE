@@ -7,8 +7,8 @@ import {
     SET_MESSAGE,
   } from "./types";
   import AuthService from "../services/authService";
-  export const register = (username, email, password) => (dispatch) => {
-    return AuthService.register(username, email, password).then(
+  export const register = (firstName, lastName, username, email, password, role) => (dispatch) => {
+    return AuthService.register(firstName, lastName, username, email, password, role).then(
       (response) => {
         dispatch({
           type: REGISTER_SUCCESS,

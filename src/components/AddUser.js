@@ -6,7 +6,7 @@ const AddUser = () => {
     id: null,
     firstName: "",
     lastName: "",
-    Username: "",
+    username: "",
     email: "",
     password: "",
     role: ""
@@ -19,14 +19,14 @@ const AddUser = () => {
     setUser({ ...user, [name]: value });
   };
   const saveUser = () => {
-    const { firstName, lastName, Username, email, password, role } = user;
-    dispatch(createUser(firstName, lastName, Username, email, password, role))
+    const { firstName, lastName, username, email, password, role } = user;
+    dispatch(createUser(firstName, lastName, username, email, password, role))
       .then(data => {
         setUser({
           id: data.id,
           firstName: data.firstName,
           lastName: data.lastName,
-          Username: data.Username,
+          username: data.username,
           email: data.email,
           password: data.password,
           role: data.role
@@ -82,11 +82,11 @@ const AddUser = () => {
             <input
               type="text"
               className="form-control"
-              id="Username"
+              id="username"
               required
-              value={user.Username}
+              value={user.username}
               onChange={handleInputChange}
-              name="Username"
+              name="username"
             />
           </div>
           <div className="form-group">

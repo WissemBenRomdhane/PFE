@@ -49,6 +49,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const [successful, setSuccessful] = useState(false);
   const { message } = useSelector(state => state.message);
   const dispatch = useDispatch();
@@ -72,12 +73,16 @@ const Register = () => {
     const password = e.target.value;
     setPassword(password);
   };
+  const onChangeRole = (e) => {
+    const role = e.target.value;
+    setRole(role);
+  };
   const handleRegister = (e) => {
     e.preventDefault();
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(register(firstName,lastName,username, email, password))
+      dispatch(register(firstName, lastName, username, email, password, role))
         .then(() => {
           setSuccessful(true);
         })
@@ -152,6 +157,17 @@ const Register = () => {
                   validations={[required, vpassword]}
                 />
               </div>
+              <div className="form-group">
+            <label htmlFor="role">role</label>
+            <Input
+              type="text"
+              className="form-control"
+              value={role}
+              onChange={onChangeRole}
+              name="role"
+              validations={[required]}
+            />
+          </div>
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>

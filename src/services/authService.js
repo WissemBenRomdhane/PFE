@@ -1,10 +1,13 @@
 import axios from "axios";
 const API_URL = "http://localhost:8083/api/auth/";
-const register = (username, email, password) => {
+const register = (firstName, lastName, username, email, password, role) => {
   return axios.post(API_URL + "signup", {
+    firstName,
+    lastName,
     username,
     email,
     password,
+    role,
   });
 };
 const login = (username, password) => {

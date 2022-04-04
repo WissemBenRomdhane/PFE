@@ -4,19 +4,19 @@ const API_URL = "http://localhost:8083/api/test/";
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
-const getUserBoard = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
+const getDeveloperBoard = () => {
+  return axios.get(API_URL + "developer", { headers: authHeader() });
 };
-const getModeratorBoard = () => {
-  return axios.get(API_URL + "mod", { headers: authHeader() });
+const getClientBoard = () => {
+  return axios.get(API_URL + "client", { headers: authHeader() });
 };
 const getAdminBoard = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
 export default {
   getPublicContent,
-  getUserBoard,
-  getModeratorBoard,
+  getDeveloperBoard,
+  getClientBoard,
   getAdminBoard,
 };
 // import http from "../http-common";

@@ -13,6 +13,7 @@ import BoardClient from "./components/BoardClient";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
+import AddUser from "./components/AddUser";
 const App = () => {
   const [showClientBoard, setShowClientBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
