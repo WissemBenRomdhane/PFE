@@ -4,7 +4,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <form>
-                <h3>Sign Up</h3>
+                <h3>Register</h3>
 
                 <div className="form-group">
                     <label>First name</label>
@@ -17,7 +17,7 @@ export default class SignUp extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Email address</label>
+                    <label>Email</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
@@ -26,9 +26,9 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="#">sign in?</a>
+                    Already registered <a href="#">log in?</a>
                 </p>
             </form>
         );
