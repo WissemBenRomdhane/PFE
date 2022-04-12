@@ -8,7 +8,7 @@ import {
   import AuthService from "../services/authService";
   export const createUser = (firstName, lastName, username, email, password, role) => async (dispatch) => {
     try {
-      const res = await AuthService.create({ firstName, lastName, username, email, password, role });
+      const res = await AuthService.register({ firstName, lastName, username, email, password, role });
       dispatch({
         type: CREATE_USER,
         payload: res.data,
