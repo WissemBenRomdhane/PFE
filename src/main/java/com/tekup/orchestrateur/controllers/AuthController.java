@@ -74,6 +74,7 @@ public class AuthController {
 					.badRequest()
 					.body(new MessageResponse("Error: Email is already in use!"));
 		}
+
 		// Create new user's account
 		User user = new User(signUpRequest.getFirstName(),
 							 signUpRequest.getLastName(),
@@ -82,11 +83,6 @@ public class AuthController {
 							 encoder.encode(signUpRequest.getPassword()));
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
-		if (strRoles == null) {
-			Role userRole = roleRepository.findByName(ERole.ROLE_CLIENT)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-			roles.add(userRole);
-		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
@@ -94,18 +90,20 @@ public class AuthController {
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
 					break;
-				case "mod":
-					Role modRole = roleRepository.findByName(ERole.ROLE_DEVELOPER)
+				case "developer":
+					Role devRole = roleRepository.findByName(ERole.ROLE_DEVELOPER)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(modRole);
+					roles.add(devRole);
 					break;
-				default:
-					Role userRole = roleRepository.findByName(ERole.ROLE_CLIENT)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(userRole);
+				case "client":
+					Role clientRole = roleRepository.findByName(ERole.ROLE_CLIENT)
+					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(clientRole);
+					break;
+	
 				}
 			});
-		}
+		
 		user.setRoles(roles);
 		userRepository.save(user);
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
