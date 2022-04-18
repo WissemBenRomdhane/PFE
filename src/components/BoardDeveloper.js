@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import UserService from "../services/userService";
-const BoardClient = () => {
+const BoardAdmin = () => {
   const [content, setContent] = useState("");
   useEffect(() => {
-    UserService.getClientBoard().then(
+    UserService.getDeveloperBoard().then(
       (response) => {
         setContent(response.data);
       },
@@ -26,4 +26,4 @@ const BoardClient = () => {
     </div>
   );
 };
-export default BoardClient;
+export default BoardAdmin;
