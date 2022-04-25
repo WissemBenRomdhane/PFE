@@ -13,6 +13,8 @@ import BoardAdmin from "./components/BoardAdmin";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
+import { StyledEngineProvider } from '@mui/material/styles';
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -98,7 +100,12 @@ const App = () => {
           </Switch>
         </div>
       </div>
+      
+      <Sidebar/>
+  
+      
     </div></Router>
+    
   );
 }
 
